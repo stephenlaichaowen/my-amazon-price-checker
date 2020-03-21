@@ -2,6 +2,7 @@
 這個 APP 讓你不需要開啟瀏覽器也能知道亞馬遜商店三星固態硬碟的價格是不是低於你心中的價格. 
 
 ## 使用方式
+我們必須在本地作業, 首先用 Visual Studio Code 開啟專案
 - 開啟 terminal
 - 安裝 node_modules `npm i`
 - 執行應用程序 `node parser.js url minPrice`
@@ -13,11 +14,9 @@ minPrice 是我們設定的價錢
 ## 使用工具/服務
 - nightmare  
 - @sendgrid/mail
-- temp-mail
-  
-  
+- temp-mail  
 
-## What does nightmare library doe ?
+## What does nightmare library do ?
 It is a web scraping tool, just like puppeteer, this tech allows you to go through web pages browse from top to bottom grabs the images/text and save in your local project
 
 ## 什麼是 SendGrid 電子郵件服務？
@@ -31,12 +30,7 @@ SendGrid 是 雲端架構電子郵件服務，能提供可靠的 交易式電子
 ## What does parser.js do ?
 It checks the price on amazon and does all the parsing and emails for us
 
-## sendgrid API key
-Nodemailer - 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
-Amazon Price Checker - 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 
-
 ## What does temp-email do ?
-It is a service that allows to receive email at a temporary address that self-destructed after a certain time elapses. 
+- It is a service that allows to receive email at a temporary address that self-destructed after a certain time elapses. 
 
-翻譯
-這是一個免費的線上服務, 讓用戶可以用暫時的電子郵箱接收信件, 這個帳號會在某個時間內銷毀, 只適合開發測試用.
+- 這是一個免費的線上服務, 讓用戶可以用暫時的電子郵箱接收信件, 這個帳號會在某個時間內銷毀, 只適合開發測試用.
