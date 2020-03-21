@@ -5,11 +5,17 @@
 - 開啟 terminal
 - 安裝 node_modules `npm i`
 - 執行應用程序 `node parser.js url minPrice`
-說明: 因為我們查詢的是亞馬遜商店商品 Samsung ssd 的價格, 所以默認網址是: `https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2`
+- 說明: 因為我們查詢的是亞馬遜商店商品 Samsung ssd 的價格, 所以默認網址是: `https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2`
 minPrice 是我們設定的價錢
 所以如果我們想知道現在三星的固態硬碟價錢是不是小於 200 塊美金, 輸入指令 `node parser.js https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2 200`
 這個過程會花個幾秒鐘時間, 然後自動寄一封 Email 到 temp-email 通知用戶.
 
+## 使用工具/服務
+- nightmare  
+- @sendgrid/mail
+- temp-mail
+  
+  
 
 ## What does nightmare library doe ?
 It is a web scraping tool, just like puppeteer, this tech allows you to go through web pages browse from top to bottom grabs the images/text and save in your local project
