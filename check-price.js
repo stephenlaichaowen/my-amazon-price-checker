@@ -6,48 +6,45 @@ const nightmare = require('nightmare')()
 
 const url = "https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2"
 
-/* 
-   arg0 arg1      arg2...
-   node parser.js url minPrice
-   skip node, parse.js these 2 elements and make url the 1st element, and minPrice 2nd element
-   this is for when we operate on terminal, we type commands to scrape the web and get results
-   使用這個方法可以讓我們不用開啟網頁也能知道資訊
-*/
-// const args = process.argv.slice(2)
-// const url = args[0]
-// const minPrice = args[1]
-
-checkPrice()
-async function checkPrice() {
+async function checkPrice(minPrice) {
   try {
     // go to url and download info from that page
     const priceString = await nightmare
                                 .goto(url)
-                                .wait('#priceblock_ourprice') // works with single page application, waits for the DOM is fully loaded and rendered by JS
-                                .evaluate(() => document.querySelector('#priceblock_ourprice').innerText) // print the text inside the tag
+                                .wait('.a-price-whole') // works with single page application, waits for the DOM is fully loaded and rendered by JS
+                                .evaluate(() => document.querySelector('.a-price-whole').innerText) // print the text inside the tag
                                 .end()
-  
-    // get rid of decimal and replace 'US$' with white space and make sure it is a decimal numbers
-    // e.x. US$199.99 => 199
-    const priceNumber = parseFloat(priceString.replace('US$', ''))
+    // console.log(priceString);
+    // const priceNumber = parseFloat(priceString.replace('US$', ''))
+    const priceNumber = parseFloat(priceString)
     console.log(`
       - current price: ${priceNumber} 
       - minimum price: ${minPrice}      
     `)
+    // let message
     if (priceNumber < minPrice) {
       await sendEmail(
         `Price is Low`,
         `The price on ${url} has dropped below ${minPrice}`
       )       
-      console.log(`
-        - the price meet your criteria, you can purchase it now !
-        - a notified email has been sent to your tem-email account
-      `)
+      // console.log(`
+      //   - the price meet your criteria, you can purchase it now !
+      //   - a notified email has been sent to your temp-email account
+      // `)
+      return {
+        currentPrice: `${priceNumber}`,
+        yourPrice: `${minPrice}`,
+        message: `price has dropped below your expectation, time to get it now !`
+      }
     } else {
-      console.log(`the price is still higher than your budget !`)
+      // console.log(`price is still higher than your budget !`)
+      return {
+        curentPrice: `${priceNumber}`,
+        yourPrice: `${minPrice}`,
+        message: 'price is still higher than your expectation, be patience !'
+      }
     }
-  } catch (e) {
-    // 如果 Email 的程式碼有錯誤, 寄一封 Email 告知
+  } catch (e) {    
     await sendEmail(`Amazon Price Checker Error`, e.message)
     throw e
   }
