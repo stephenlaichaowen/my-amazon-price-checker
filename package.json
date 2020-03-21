@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon parser.js"
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +12,8 @@
   "dependencies": {
     "@sendgrid/mail": "^6.5.5",
     "dotenv": "^8.2.0",
+    "ejs-locals": "^1.0.2",
+    "express": "^4.17.1",
     "nightmare": "^3.0.2"
   },
   "devDependencies": {

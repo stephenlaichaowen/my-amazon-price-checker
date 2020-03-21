@@ -1,26 +1,29 @@
 require('dotenv').config()
 const sgMail = require('@sendgrid/mail')
+const express = require('express')
+const app  = express()
+const engine = require('ejs-locals')
+const port = process.env.PORT || 3000
+const nightmare = require('nightmare')()
+const url = "https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2"
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-// process.env.SENDGRID_API_KEY
+app.engine('ejs', engine)
+app.set('views', __dirname + '/views')
+app.set('view engine', 'ejs')
 
-const nightmare = require('nightmare')()
+app.listen(port, () => {
+  console.log(`Port running on ${port}`);
+})
 
-// const myURL = "https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2"
+app.get('/', (req, res) => {
+  res.render('index')
+})
 
-/* 
-   arg0 arg1      arg2...
-   node parser.js url minPrice
-   skip node, parse.js these 2 elements and make url the 1st element, and minPrice 2nd element
-   this is for when we operate on terminal, we type commands to scrape the web and get results
-   使用這個方法可以讓我們不用開啟網頁也能知道資訊
-*/
-const args = process.argv.slice(2)
-const url = args[0]
-const minPrice = args[1]
-
-checkPrice()
-async function checkPrice() {
+checkPrice(200)
+/* functions */
+async function checkPrice(minPrice) {
   try {
     // go to url and download info from that page
     const priceString = await nightmare
@@ -55,9 +58,6 @@ async function checkPrice() {
   }
 }
 
-// node parser.js https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2 200
-
-
 function sendEmail(subject, body) {
   const email = {
     to: 'teserex795@provamail.com',
@@ -69,3 +69,4 @@ function sendEmail(subject, body) {
 
   return sgMail.send(email)
 }
+
