@@ -7,12 +7,12 @@
 - 安裝 node_modules `npm i`
 - 執行應用程序 `node parser.js https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2 200`
 - 說明: 因為我們查詢的是亞馬遜商店商品 Samsung ssd 的價格, 所以默認網址是: `https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2`
-  ![本地操作畫面](https://stephenlaichaowen.github.io/my-assets/img/terminal.png)
 
 ### 說明
 - https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2` 是我們要查詢的網址
 - `200` 是我們輸入的價格, 我們想知道三星固態硬碟的價格是不是低於美金 200 元
 - 這個過程會花個幾秒鐘時間, 然後自動寄一封 Email 到 temp-email 通知用戶.
+  ![本地操作畫面](https://stephenlaichaowen.github.io/my-assets/img/terminal.png)
 
 ## 使用工具/服務
 - nightmare  
