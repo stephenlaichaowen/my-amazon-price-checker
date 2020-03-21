@@ -5,11 +5,13 @@
 我們必須在本地作業, 首先用 Visual Studio Code 開啟專案
 - 開啟 terminal
 - 安裝 node_modules `npm i`
-- 執行應用程序 `node parser.js url minPrice`
+- 執行應用程序 `node parser.js https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2 200`
 - 說明: 因為我們查詢的是亞馬遜商店商品 Samsung ssd 的價格, 所以默認網址是: `https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2`
-minPrice 是我們設定的價錢
-所以如果我們想知道現在三星的固態硬碟價錢是不是小於 200 塊美金, 輸入指令 `node parser.js https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2 200`
-這個過程會花個幾秒鐘時間, 然後自動寄一封 Email 到 temp-email 通知用戶.
+
+### 說明
+- https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2 200` 是我們要查詢的網址
+- `200` 是我們輸入的價格, 我們想知道星固態硬碟的價格是不是低於美金 200 元
+- 這個過程會花個幾秒鐘時間, 然後自動寄一封 Email 到 temp-email 通知用戶.
 
 ## 使用工具/服務
 - nightmare  
