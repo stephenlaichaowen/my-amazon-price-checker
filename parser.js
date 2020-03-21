@@ -34,7 +34,7 @@ async function checkPrice() {
     const priceNumber = parseFloat(priceString.replace('US$', ''))
     console.log(`
       - current price: ${priceNumber} 
-      - ideal price: ${minPrice}      
+      - minimum price: ${minPrice}      
     `)
     if (priceNumber < minPrice) {
       await sendEmail(
@@ -42,8 +42,8 @@ async function checkPrice() {
         `The price on ${url} has dropped below ${minPrice}`
       )       
       console.log(`
-        - a notified email has been sent to your account
-        - the price is below your budget, you can purchase it now !
+        - the price meet your criteria, you can purchase it now !
+        - a notified email has been sent to your tem-email account
       `)
     } else {
       console.log(`the price is still higher than your budget !`)
