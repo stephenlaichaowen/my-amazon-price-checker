@@ -1,10 +1,10 @@
 # 網路爬蟲應用程式
-這個 APP 讓你不需要開啟瀏覽器也能知道亞馬遜商店某個產品的價格是不是低於你心中的價格. 
+這個 APP 讓你不需要開啟瀏覽器也能知道亞馬遜商店三星固態硬碟的價格是不是低於你心中的價格. 
 
 ## 使用方式
-開啟 terminal
-安裝 node_modules `npm i`
-執行應用程序 `node parser.js url minPrice`
+- 開啟 terminal
+- 安裝 node_modules `npm i`
+- 執行應用程序 `node parser.js url minPrice`
 說明: 因為我們查詢的是亞馬遜商店商品 Samsung ssd 的價格, 所以默認網址是: `https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2`
 minPrice 是我們設定的價錢
 所以如果我們想知道現在三星的固態硬碟價錢是不是小於 200 塊美金, 輸入指令 `node parser.js https://www.amazon.com/Samsung-970-EVO-Plus-MZ-V7S1T0B/dp/B07MFZY2F2 200`
