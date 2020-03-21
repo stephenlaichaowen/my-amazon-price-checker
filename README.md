@@ -1,8 +1,13 @@
 # 網路爬蟲應用程式 - amazon price checker
 
-這個 repo 有兩個分支, local 和 web. local 讓你不需要開啟瀏覽器也能知道亞馬遜商店三星固態硬碟的價格是不是低於你心中的價格. web 分支的程序讓使用者不需要到商品網頁就可以查詢到商品價格.
+## 商品名稱 / 亞馬遜
+Samsung (MZ-V7S1T0B/AM) 970 EVO Plus SSD 1TB - M.2 NVMe Interface Internal Solid State Drive with V-NAND Technology
 
-## 使用方式
+## 分支
+- master: 讓你不需要開啟瀏覽器也能知道亞馬遜商店三星固態硬碟的價格是不是低於你心中的價格. 
+- web: 開啟網頁, 點擊按紐, 就可以撈到商品資料. [DEMO](https://my-amazon-price-checker.herokuapp.com/)
+
+## master 分支應用程序使用方式
 我們必須在本地作業, 首先用 Visual Studio Code 開啟專案
 - 開啟 terminal
 - 安裝 node_modules `npm i`
