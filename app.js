@@ -13,7 +13,7 @@ app.use(express.static('client'))
 // app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-let myMessage = 'message goes here...'
+let myMessage = 'returned message...'
 app.get('/', async (req, res) => {  
   await res.render('index', { myMessage })
   // res.render('index')

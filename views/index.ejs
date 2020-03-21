@@ -21,14 +21,17 @@
 
 <body>
   <div class="container mt-5">
-    <h1>Amazon Price Checker</h1>
+    <h1>Amazon Price Checker</h1><br>
+    <h3>This App lets you check if the item price meets your budget</h3><br>
+    <h4>Item: Samsung (MZ-V7S1T0B/AM) 970 EVO Plus SSD 1TB - M.2 NVMe Interface Internal Solid State Drive with V-NAND Technology</h4><br>
     <form action="/checkPrice" method="post">
-      <div class="form-group">
-        <label for="price">Please enter your ideal price</label>
-        <input type="number" id="price" name="price" class="form-control" autofocus />
+      <div class="input-group">
+        <input type="number" id="price" name="price" class="form-control" autofocus placeholder="Please enter your ideal price..." />
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-primary">Send</button> 
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary">Send</button> 
-    </form>
+    </form><br>
     <p>
       <%= myMessage %>
     </p>
