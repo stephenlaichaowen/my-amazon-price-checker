@@ -14,9 +14,8 @@ app.use(express.static('client'))
 app.use(bodyParser.urlencoded({ extended: false }))
 
 let myMessage = 'returned message...'
-app.get('/', async (req, res) => {  
-  await res.render('index', { myMessage })
-  // res.render('index')
+app.get('/',  (req, res) => {  
+  res.render('index', { myMessage })  
 })
 
 app.post('/checkPrice', async (req, res) => {  
