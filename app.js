@@ -13,10 +13,10 @@ app.use(express.static('client'))
 // app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-let myMessage
-app.get('/', (req, res) => {  
-  // res.render('index', { myMessage })
-  res.render('index')
+let myMessage = 'message goes here...'
+app.get('/', async (req, res) => {  
+  await res.render('index', { myMessage })
+  // res.render('index')
 })
 
 app.post('/checkPrice', async (req, res) => {  
@@ -24,10 +24,9 @@ app.post('/checkPrice', async (req, res) => {
   console.log(`minPrice: ${price}`)
   let { message } = await checkPrice(price)
   console.log(`信息: ${message}`)
-  // myMessage = message
+  myMessage = message
   res.status(200).redirect('/')
 })
-
 
 app.listen(port, () => {
   console.log(`Port running on ${port}`);
