@@ -8,8 +8,7 @@ async function checkPrice() {
       .goto(url)
       .wait('.a-color-price') 
       .evaluate(() => document.querySelector('.a-color-price').innerText)
-      // .end() 
-    
+        
     const priceNumber = parseFloat(priceString.replace('US$', ''))   
     console.log(`current price: ${priceNumber}`)
     return { currentPrice: `${priceNumber}` }

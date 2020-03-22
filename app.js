@@ -2,7 +2,7 @@ const express = require('express')
 const app  = express()
 const engine = require('ejs-locals')
 const port = process.env.PORT || 3000
-const checkPrice = require('./check-price-v2')
+const checkPrice = require('./check-current-price')
 
 app.engine('ejs', engine)
 app.set('views', __dirname + '/views')
