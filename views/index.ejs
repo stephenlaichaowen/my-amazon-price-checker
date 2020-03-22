@@ -71,7 +71,7 @@
     let yourPrice = priceBox.value
     console.log(yourPrice)
 
-    const res = await axios.post(url, { price: yourPrice })
+    const res = await axios.post('/checkPrice', { price: yourPrice })
     console.log(res)
 
     const { price } = await res.data
