@@ -15,8 +15,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>  
-  <!-- <script src="/axios.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>    
   <title>Home</title>
 </head>
 
@@ -25,10 +24,6 @@
     max-width: 500px;
     margin: auto;
   }
-
-  /* .spinner-border {
-    display: none;
-  } */
 </style>
 
 <body>
@@ -70,13 +65,13 @@
       checkPrice()
   })
 
-  // checkPrice()
+  const url = 'https://my-amazon-price-checker.herokuapp.com/'
   async function checkPrice() {    
     
     let yourPrice = priceBox.value
     console.log(yourPrice)
 
-    const res = await axios.post('/checkPrice', { price: yourPrice })
+    const res = await axios.post(`${url}/checkPrice`, { price: yourPrice })
     console.log(res)
 
     const { price } = await res.data
