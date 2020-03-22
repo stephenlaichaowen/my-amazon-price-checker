@@ -3,8 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/all.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -16,30 +15,84 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
   <title>Home</title>
 </head>
 
+<style>
+  body {
+    max-width: 500px;
+    margin: auto;
+  }
+
+  /* .spinner-border {
+    display: none;
+  } */
+</style>
+
 <body>
   <div class="container mt-5">
-    <h1>Amazon Price Checker</h1><br>
-    <h3>This App lets you check if the item price meets your budget</h3><br>
-    <h4>Item: Samsung (MZ-V7S1T0B/AM) 970 EVO Plus SSD 1TB - M.2 NVMe Interface Internal Solid State Drive with V-NAND Technology</h4><br>
-    <form action="/checkPrice" method="post">
+    <h1>Amazon Price Checker</h1><br>    
+    <div class="">
+      <img  width=200" height="200" src="https://images-na.ssl-images-amazon.com/images/I/31%2BrkXdQL8L._SL500_AC_SS350_.jpg" alt="ssd image">
+      <h4 class="">Item: Samsung (MZ-V7S1T0B/AM) 970 EVO Plus SSD 1TB - M.2 NVMe Interface Internal Solid State Drive with V-NAND Technology</h4><br>
+    </div> 
+    <form>
       <div class="input-group">
-        <input type="number" id="price" name="price" class="form-control" autofocus placeholder="Please enter your ideal price..." />
+        <input type="text" class="priceBox form-control" autofocus placeholder="Please enter your price..." />
         <div class="input-group-append">
-          <button type="submit" class="btn btn-primary">Send</button> 
+          <button class="sendBtn btn btn-primary">Check Price</button> 
         </div>
       </div>
     </form><br>
-    <p>
-      <%= myMessage %>
-    </p>
+    <ul class="list-group message"></ul>
   </div>
 </body>
 
 </html>
 
 <script>
+  const sendBtn = document.querySelector('.sendBtn')
+  const message = document.querySelector('.message')
+  const priceBox = document.querySelector('.priceBox')
+  const spinner = document.querySelector('.spinner-border')
 
+  let loading = false
+ 
+  sendBtn.addEventListener('click', e => {
+    e.preventDefault()   
+      message.innerHTML = `
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      `      
+      checkPrice()
+  })
+
+  // checkPrice()
+  async function checkPrice() {    
+    
+    let yourPrice = priceBox.value
+    console.log(yourPrice)
+
+    const res = await axios.post('/checkPrice', { price: yourPrice })
+    console.log(res)
+
+    const { price } = await res.data
+    console.log(`current price: ${price}`)
+    let alert
+    if (price < priceBox.value) {
+      alert = `it is cheap`
+    } else {
+      alert = `it is expensive`
+    }    
+    
+    message.innerHTML = `
+      <li class="list-group-item">current price: US$${price}</li>
+      <li class="list-group-item">your price: US$${priceBox.value}</li>
+      <li class="list-group-item">${alert}</li>
+    `   
+
+    priceBox.value = ''
+  }
 </script>
