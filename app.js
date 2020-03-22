@@ -8,6 +8,7 @@ app.engine('ejs', engine)
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 
+app.use(express.static(__dirname + '/client'))
 app.use(express.json())
 
 app.get('/',  (req, res) => {  
