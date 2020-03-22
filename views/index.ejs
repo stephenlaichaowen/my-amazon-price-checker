@@ -65,13 +65,13 @@
       checkPrice()
   })
 
-  const url = 'https://my-amazon-price-checker.herokuapp.com'
+  // const url = 'https://my-amazon-price-checker.herokuapp.com'
   async function checkPrice() {    
     
     let yourPrice = priceBox.value
     console.log(yourPrice)
 
-    const res = await axios.post(`${url}/checkPrice`, { price: yourPrice })
+    const res = await axios.post(url, { price: yourPrice })
     console.log(res)
 
     const { price } = await res.data
